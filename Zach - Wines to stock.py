@@ -1,11 +1,8 @@
 # Databricks notebook source
-import pandas as pd
+import utils
+# from utils import data_without_spaces
 
-# Load wine data
-data = pd.read_csv("/dbfs/databricks-datasets/wine-quality/winequality-red.csv", sep=";")
-
-# Remove spaces from column names
-data.rename(columns=lambda x: x.replace(' ', '_'), inplace=True)
+data = utils.data_without_spaces()
 
 # COMMAND ----------
 

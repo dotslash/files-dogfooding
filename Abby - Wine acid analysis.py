@@ -1,11 +1,13 @@
 # Databricks notebook source
-import pandas as pd
+# MAGIC %load_ext autoreload
+# MAGIC %autoreload 2
 
-# Load wine data
-data = pd.read_csv("/dbfs/databricks-datasets/wine-quality/winequality-white.csv", sep=";")
+# COMMAND ----------
 
-# Remove spaces from column names
-data.rename(columns=lambda x: x.replace(' ', '_'), inplace=True)
+import utils
+# from utils import data_without_spaces
+
+data = utils.data_without_spaces()
 
 # COMMAND ----------
 
@@ -30,6 +32,8 @@ data = data[data['residual_sugar'] <= 2]
 
 # Visualize relationship between high fixed acidity and other wine attributes 
 import matplotlib.pyplot as plt
+import seaborn as sns
+
 
 dims = (3, 4)
 
